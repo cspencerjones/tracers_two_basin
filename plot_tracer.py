@@ -34,57 +34,7 @@ def fields_for_plotting(ds,all_tracers,grid):
     all_tracers_mean_atl=tracerb[:,:,:,140:215].where(ds.XC>140).mean(dim=('XC')).load()
     return(all_tracers_mean_pac,all_tracers_mean_atl,layers_depth_atl,layers_depth_pac,layers_depth,ROC_pac,ROC_atl,ROC_tot,tracerb)
 
-def plot_tracers1(ds,all_tracers_mean_atl,layers_depth_atl,layers_depth,ROC_atl,ROC_tot,grid):
-    import xarray as xr
-    import numpy as np
-    import matplotlib.pyplot as plt
-    the_tracers=xr.concat([all_tracers_mean_atl[:,0,:,:],all_tracers_mean_atl[:,-3,:,:]+all_tracers_mean_atl[:,-4,:,:]],dim='tracer')
-    the_tracers['tracer']=['N Atl','S channel']
-    #p = the_tracers.plot(figsize=(17, 5), col='kappa', row='tracer', vmin=0, vmax=1,rasterized=True)
-    layer_1RHO_center_new = xr.DataArray(layers_depth_atl, dims=['layer_1RHO_bounds','YG'], coords={'layer_1RHO_bounds': ds.layer_1RHO_bounds,'YG':ds.YG})
-    layer2D,_=(xr.broadcast(-9.81*(ds.layer_1RHO_bounds-35)/1035, ds.YG))
-    layer2D.coords['depth']=(-layer_1RHO_center_new)
-    b = ROC_atl.copy()
-    b[:,0:35]=ROC_tot[:,0:35].copy()
-    the_tracers.coords['depth']=-grid.interp(layers_depth_atl,'Y',boundary='fill')
-    layers_depth_atl[:,0:35]=layers_depth[:,0:35]
-    b.coords['depth']=-layers_depth_atl
-    p = the_tracers.plot(figsize=(17, 5), col='case', row='tracer',x='YC',y='depth', vmin=0, vmax=1,rasterized=True)
-    for ax in p.axes.flat:
-        layer2D.plot.contour(x='YG',y='depth',ax=ax,levels=np.arange(0,0.04,0.002),colors='black')
-        (b/10**6).plot.contour(x='YG',y='depth',ax=ax,vmin=0,vmax=25,xlim=(-70,70),ylim=(-4000,0),levels=25/2,colors='white',linewidths=0.5)
-        (b/10**6).plot.contour(x='YG',y='depth',ax=ax,vmin=-25,vmax=0,xlim=(-70,70),ylim=(-4000,0),levels=25/2,colors='white', 
-                               linestyles='dashed',linewidths=0.5)
-        ax.axvline(-36,color='yellow')
-        ax.axvline(-52.5,color='yellow')
-        plt.xlim(-70,70)
-    return p
 
-def plot_tracers2(ds,all_tracers_mean_pac,layers_depth_pac,layers_depth,ROC_pac,ROC_tot,grid):
-    import xarray as xr
-    import numpy as np
-    import matplotlib.pyplot as plt
-    the_tracers=xr.concat([all_tracers_mean_pac[:,0,:,:],all_tracers_mean_pac[:,-3,:,:]+all_tracers_mean_pac[:,-4,:,:]],dim='tracer')
-    the_tracers['tracer']=['N Atl','S channel']
-    #p = the_tracers.plot(figsize=(17, 5), col='kappa', row='tracer', vmin=0, vmax=1,rasterized=True)
-    layer_1RHO_center_new = xr.DataArray(layers_depth_pac, dims=['layer_1RHO_bounds','YG'], coords={'layer_1RHO_bounds': ds.layer_1RHO_bounds,'YG':ds.YG})
-    layer2D,_=(xr.broadcast(-9.81*(ds.layer_1RHO_bounds-35)/1035, ds.YG))
-    layer2D.coords['depth']=(-layer_1RHO_center_new)
-    b = ROC_pac.copy()
-    b[:,0:35]=ROC_tot[:,0:35].copy()
-    the_tracers.coords['depth']=-grid.interp(layers_depth_pac,'Y',boundary='fill')
-    p = the_tracers.plot(figsize=(17, 5), col='case', row='tracer',x='YC',y='depth', vmin=0, vmax=1,rasterized=True)
-    layers_depth_pac[:,0:35]=layers_depth[:,0:35]
-    b.coords['depth']=-layers_depth_pac
-    for ax in p.axes.flat:
-        layer2D.plot.contour(x='YG',y='depth',ax=ax,levels=np.arange(0,0.04,0.002),colors='black')
-        (b/10**6).plot.contour(x='YG',y='depth',ax=ax,vmin=0,vmax=25,xlim=(-70,70),ylim=(-4000,0),levels=25/2,colors='white',linewidths=0.5)
-        (b/10**6).plot.contour(x='YG',y='depth',ax=ax,vmin=-25,vmax=0,xlim=(-70,70),ylim=(-4000,0),levels=25/2,colors='white', 
-                               linestyles='dashed',linewidths=0.5)
-        ax.axvline(-36,color='yellow')
-        ax.axvline(-52.5,color='yellow')
-        plt.xlim(-70,70)
-    return p
 
 def plot_tracers3(ds,all_tracers_mean_pac,layers_depth_pac,layers_depth,ROC_pac,ROC_tot,grid):
     import xarray as xr
