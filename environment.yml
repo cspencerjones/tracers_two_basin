@@ -1,0 +1,17 @@
+name: tracers
+channels:
+  - conda-forge
+  - default
+dependencies:
+  - python=3.6
+  - numpy
+  - scipy
+  - pandas
+  - dask
+  - xarray
+  - matplotlib
+  - jupyter
+  - pip:
+    - git+https://github.com/xgcm/xgcm.git
+    - git+https://github.com/xgcm/xmitgcm.git
+
