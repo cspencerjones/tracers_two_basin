@@ -1,0 +1,2 @@
+wget -O tracer.tar.gz https://ndownloader.figshare.com/files/14803562
+tar -xvf tar -xvf tracer.tar.gz
