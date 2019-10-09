@@ -50,7 +50,7 @@ def plot_tracers3(ds,all_tracers_mean_pac,layers_depth_pac,layers_depth,ROC_pac,
     p = the_tracers.plot(figsize=(17, 6), col='case', col_wrap=3,x='YC',y='depth', vmin=0, vmax=1,rasterized=True,cbar_kwargs={'orientation':"horizontal",'fraction':0.07})
     layers_depth_pac[:,0:35]=layers_depth[:,0:35]
     b.coords['depth']=-layers_depth_pac
-    x=[r'$\kappa_{redi}=50m^2/s$', r'$\kappa_{redi}=500m^2/s$', r'$\kappa_{redi}=5000m^2/s$', r'$\kappa_v=2 \times 10^{-5}m^2/s$, $\kappa_{redi}=500m^2/s$', r'$\kappa_v=2 \times 10^{-4}m^2/s$, $\kappa_{redi}=500m^2/s$', r'$\kappa_v=2 \times 10^{-3}m^2/s$, $\kappa_{redi}=500m^2/s$']
+    x=[r'$\kappa_{redi}^{tr}=50m^2/s$', r'$\kappa_{redi}^{tr}=500m^2/s$', r'$\kappa_{redi}^{tr}=5000m^2/s$', r'$\kappa_v^{tr}=2 \times 10^{-5}m^2/s$, $\kappa_{redi}^{tr}=500m^2/s$', r'$\kappa_v^{tr}=2 \times 10^{-4}m^2/s$, $\kappa_{redi}^{tr}=500m^2/s$', r'$\kappa_v^{tr}=2 \times 10^{-3}m^2/s$, $\kappa_{redi}^{tr}=500m^2/s$']
     i=0
     for ax in p.axes.flat:
         layer2D.plot.contour(x='YG',y='depth',ax=ax,levels=np.arange(0,0.04,0.002),colors='black',linewidths=0.5)
@@ -79,7 +79,7 @@ def plot_tracerspac(ds,all_tracers_mean_pac,layers_depth_pac,layers_depth,ROC_pa
     p = the_tracers.plot(figsize=(17, 6), col='case', col_wrap=3,x='YC',y='depth', vmin=0, vmax=1,rasterized=True,cbar_kwargs={'orientation':"horizontal",'fraction':0.07})
     layers_depth_pac[:,0:35]=layers_depth[:,0:35]
     b.coords['depth']=-layers_depth_pac
-    x=[r'$\kappa_{redi}=50m^2/s$', r'$\kappa_{redi}=500m^2/s$', r'$\kappa_{redi}=5000m^2/s$', r'$\kappa_v=2 \times 10^{-5}m^2/s$, $\kappa_{redi}=500m^2/s$', r'$\kappa_v=2 \times 10^{-4}m^2/s$, $\kappa_{redi}=500m^2/s$', r'$\kappa_v=2 \times 10^{-3}m^2/s$, $\kappa_{redi}=500m^2/s$']
+    x=[r'$\kappa_{redi}^{tr}=50m^2/s$', r'$\kappa_{redi}^{tr}=500m^2/s$', r'$\kappa_{redi}^{tr}=5000m^2/s$', r'$\kappa_v^{tr}=2 \times 10^{-5}m^2/s$, $\kappa_{redi}^{tr}=500m^2/s$', r'$\kappa_v^{tr}=2 \times 10^{-4}m^2/s$, $\kappa_{redi}^{tr}=500m^2/s$', r'$\kappa_v^{tr}=2 \times 10^{-3}m^2/s$, $\kappa_{redi}^{tr}=500m^2/s$']
     i=0
     for ax in p.axes.flat:
         layer2D.plot.contour(x='YG',y='depth',ax=ax,levels=np.arange(0,0.04,0.002),colors='black',linewidths=0.5)
@@ -107,7 +107,7 @@ def plot_tracerschannel(ds,all_tracers_mean_pac,layers_depth_pac,layers_depth,RO
     p = the_tracers.plot(figsize=(17, 6), col='case', col_wrap=3,x='YC',y='depth', vmin=0, vmax=1,rasterized=True,cbar_kwargs={'orientation':"horizontal",'fraction':0.07})
     layers_depth_pac[:,0:35]=layers_depth[:,0:35]
     b.coords['depth']=-layers_depth_pac
-    x=[r'$\kappa_{redi}=50m^2/s$', r'$\kappa_{redi}=500m^2/s$', r'$\kappa_{redi}=5000m^2/s$', r'$\kappa_v=2 \times 10^{-5}m^2/s$, $\kappa_{redi}=500m^2/s$', r'$\kappa_v=2 \times 10^{-4}m^2/s$, $\kappa_{redi}=500m^2/s$', r'$\kappa_v=2 \times 10^{-3}m^2/s$, $\kappa_{redi}=500m^2/s$']
+    x=[r'$\kappa_{redi}^{tr}=50m^2/s$', r'$\kappa_{redi}^{tr}=500m^2/s$', r'$\kappa_{redi}^{tr}=5000m^2/s$', r'$\kappa_v^{tr}=2 \times 10^{-5}m^2/s$, $\kappa_{redi}^{tr}=500m^2/s$', r'$\kappa_v^{tr}=2 \times 10^{-4}m^2/s$, $\kappa_{redi}^{tr}=500m^2/s$', r'$\kappa_v^{tr}=2 \times 10^{-3}m^2/s$, $\kappa_{redi}^{tr}=500m^2/s$']
     i=0
     for ax in p.axes.flat:
         layer2D.plot.contour(x='YG',y='depth',ax=ax,levels=np.arange(0,0.04,0.002),colors='black',linewidths=0.5)
